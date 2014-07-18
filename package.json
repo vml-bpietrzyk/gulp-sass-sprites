@@ -1,0 +1,39 @@
+{
+  "name": "gulp-vml-sprites",
+  "version": "0.0.1",
+  "description": "Gulp spritesmith wrapper",
+  "keywords": [
+    "gulpplugin",
+    "sprite"
+  ],
+  "private": true,
+  "homepage": "http://git.pride.gl/frontend-projects/gulp-vml-sprites",
+  "author": {
+    "name": "Bartłomiej Pietrzyk",
+    "email": "bartlomiej.pietrzyk@vml.com"
+  },
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@git.pride.gl:frontend-projects/gulp-vml-sprites.git"
+  },
+  "dependencies": {
+    "through": "*",
+    "gulp-util": "~2.2.0",
+    "event-stream": "*",
+    "json2css": "~4.2.0",
+    "async": "~0.2.10",
+    "spritesmith": "~0.18.0",
+    "lodash": "~2.4.1",
+    "vinyl": "~0.2.3"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
