@@ -1,21 +1,22 @@
 {
-  "name": "gulp-vml-sprites",
+  "name": "gulp-sass-sprites",
   "version": "0.0.1",
-  "description": "Gulp spritesmith wrapper",
+  "description": "Gulp spritesmith wrapper to generate sass partial",
   "keywords": [
     "gulpplugin",
-    "sprite"
+    "sprite",
+    "sass"
   ],
   "private": true,
-  "homepage": "http://git.pride.gl/frontend-projects/gulp-vml-sprites",
+  "homepage": "https://github.com/vml-bpietrzyk/gulp-sass-sprites",
   "author": {
     "name": "Bartłomiej Pietrzyk",
-    "email": "bartlomiej.pietrzyk@vml.com"
+    "email": "pietrzyk.bartlomiej@gmail.com"
   },
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git@git.pride.gl:frontend-projects/gulp-vml-sprites.git"
+    "url": "git@github.com:vml-bpietrzyk/gulp-sass-sprites.git"
   },
   "dependencies": {
     "through": "*",
