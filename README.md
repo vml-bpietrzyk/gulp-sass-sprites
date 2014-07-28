@@ -115,6 +115,14 @@ Path to mustache tmpl file, to format output styles file.
 Set relative path to sprite img, which will be used in styles file.
 
 
+#### options.padding
+Type: `Integer`
+Default: ``
+
+Padding between images in generated sprite
+
+Set padding in px between images in result sprite
+
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

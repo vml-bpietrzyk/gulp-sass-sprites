@@ -49,10 +49,11 @@ module.exports = function ( options ) {
             spritesmith(config, function(err, result) {
                 if (err) return self.emit('error', new PluginError('gulp-spritesmith', 'Error occurred during spritesmith processing'));
 
-                var imgPath = rename(params.imgPath, group),
-                    si      = saveImages.bind(this);
+                var imgStylePath    = rename(params.imgPath, group),
+                    imgPath         = rename(params.imgName, group),
+                    si              = saveImages.bind(this);
 
-                _style.push({ coordinates : result.coordinates, properties : result.properties, imgPath : imgPath });
+                _style.push({ coordinates : result.coordinates, properties : result.properties, imgPath : imgStylePath });
 
                 si(result, imgPath);
                 cb();
