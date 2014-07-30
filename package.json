@@ -16,7 +16,7 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:vml-bpietrzyk/gulp-sass-sprites.git"
+    "url": "git://github.com/vml-bpietrzyk/gulp-sass-sprites.git"
   },
   "dependencies": {
     "through": "*",

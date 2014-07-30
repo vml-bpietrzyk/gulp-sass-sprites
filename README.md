@@ -18,7 +18,7 @@ Then, add it to your package.json with source url (github repository)
 ```javascript
 "devDependencies": {
   "gulp": "~3.7.0",
-  "gulp-sass-sprites": "git+ssh://git@github.com:vml-bpietrzyk/gulp-sass-sprites.git"
+  "gulp-sass-sprites": "git://github.com/vml-bpietrzyk/gulp-sass-sprites.git"
 }
 ```
 
