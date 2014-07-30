@@ -53,7 +53,7 @@ module.exports = function ( options ) {
                     imgPath         = rename(params.imgName, group),
                     si              = saveImages.bind(this);
 
-                _style.push({ coordinates : result.coordinates, properties : result.properties, imgPath : imgStylePath });
+                _style.push({ coordinates : result.coordinates, properties : result.properties, imgPath : imgStylePath, group : group });
 
                 si(result, imgPath);
                 cb();
