@@ -42,13 +42,13 @@ $spriteGroups: (
 @function sprite-group-width($name) {
     $group : map-get(map-get($sprites, $name), 'group');
 
-    @return map-get(map-get($spriteGroups, $name), 'width');
+    @return map-get(map-get($spriteGroups, $group), 'width');
 }
 
 @function sprite-group-height($name) {
     $group : map-get(map-get($sprites, $name), 'group');
 
-    @return map-get(map-get($spriteGroups, $name), 'height');
+    @return map-get(map-get($spriteGroups, $group), 'height');
 }
 
 @function sprite-group-image($name) {
