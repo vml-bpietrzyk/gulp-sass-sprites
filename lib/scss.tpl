@@ -65,6 +65,12 @@ $spriteGroups: (
     background-position: #{map-get($sprite, 'x')}px #{map-get($sprite, 'y')}px;
 }
 
+@mixin sprite-retina-position($name) {
+    $sprite : map-get($sprites, $name);
+
+    background-position: #{map-get($sprite, 'x')/2}px #{map-get($sprite, 'y')/2}px;
+}
+
 @mixin sprite($name, $extend : false) {
     $sprite : map-get($sprites, $name);
 
@@ -93,5 +99,6 @@ $spriteGroups: (
     background-size: #{sprite-group-width($name)/2}px #{sprite-group-height($name)/2}px;
     height: #{sprite-height($name)/2}px;
     width: #{sprite-width($name)/2}px;
+    @include sprite-retina-position($name);
 }
 <% } %>
