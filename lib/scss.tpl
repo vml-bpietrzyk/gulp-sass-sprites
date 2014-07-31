@@ -1,5 +1,5 @@
 <% if(images.length && groups.length){ %>
-/* MAPS */
+// MAPS
 
 $sprites: (
 <% _.forEach(images, function( i ) { %>
@@ -23,30 +23,14 @@ $spriteGroups: (
 <% }); %>
 );
 
-/* PLACEHOLDERS */
+// PLACEHOLDERS
 <% _.forEach(groups, function( g ) { %>
 %sprite-<%- g.name %> {
     background-image: url(<%- g.image %>);
 }
 <% }); %>
 
-/* MIXINS & FUNCTIONS */
-
-@mixin sprite($name) {
-    $sprite : map-get($sprites, $name);
-
-    @extend %sprite-#{map-get($sprite, 'group')};
-    background-position: #{map-get($sprite, 'x')}px #{map-get($sprite, 'y')}px;
-    height: #{map-get($sprite, 'height')}px;
-    width: #{map-get($sprite, 'width')}px;
-}
-
-@mixin sprite-position($name) {
-    $sprite : map-get($sprites, $name);
-
-    background-position: #{map-get($sprite, 'x')}px #{map-get($sprite, 'y')}px;
-}
-
+// MIXINS & FUNCTIONS
 @function sprite-width($name) {
     @return map-get(map-get($sprites, $name), 'width');
 }
@@ -61,5 +45,26 @@ $spriteGroups: (
 
 @function sprite-image($name) {
     @return sprite-group-image(map-get(map-get($sprites, $name), 'group'));
+}
+
+@mixin sprite-position($name) {
+    $sprite : map-get($sprites, $name);
+
+    background-position: #{map-get($sprite, 'x')}px #{map-get($sprite, 'y')}px;
+}
+
+@mixin sprite($name, $extend : false) {
+    $sprite : map-get($sprites, $name);
+
+    @if $extend {
+        @extend %sprite-#{map-get($sprite, 'group')};
+    }
+    @else {
+        background-image: url(#{sprite-image($sprite)});
+    }
+
+    height: #{sprite-height($sprite)}px;
+    width: #{sprite-width($sprite)}px;
+    @include sprite-position($sprite);
 }
 <% } %>
