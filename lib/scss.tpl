@@ -79,4 +79,20 @@ $spriteGroups: (
     width: #{sprite-width($name)}px;
     @include sprite-position($name);
 }
+
+@mixin sprite-retina($name, $extend : false) {
+    $sprite : map-get($sprites, $name);
+
+    @if $extend {
+        @extend %sprite-#{map-get($sprite, 'group')};
+    }
+    @else {
+        background-image: url(#{sprite-image($name)});
+    }
+    background-repeat: no-repeat;
+    background-size: #{sprite-group-width($name)/2}px #{sprite-group-height($name)/2}px;
+    height: #{sprite-height($name)/2}px;
+    width: #{sprite-width($name)/2}px;
+    @include sprite-position($name);
+}
 <% } %>
