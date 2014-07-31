@@ -93,6 +93,5 @@ $spriteGroups: (
     background-size: #{sprite-group-width($name)/2}px #{sprite-group-height($name)/2}px;
     height: #{sprite-height($name)/2}px;
     width: #{sprite-width($name)/2}px;
-    @include sprite-position($name);
 }
 <% } %>
