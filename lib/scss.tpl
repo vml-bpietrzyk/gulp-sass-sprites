@@ -60,11 +60,11 @@ $spriteGroups: (
         @extend %sprite-#{map-get($sprite, 'group')};
     }
     @else {
-        background-image: url(#{sprite-image($sprite)});
+        background-image: url(#{sprite-image($name)});
     }
 
-    height: #{sprite-height($sprite)}px;
-    width: #{sprite-width($sprite)}px;
-    @include sprite-position($sprite);
+    height: #{sprite-height($name)}px;
+    width: #{sprite-width($name)}px;
+    @include sprite-position($name);
 }
 <% } %>
