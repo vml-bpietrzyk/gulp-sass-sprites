@@ -1,12 +1,12 @@
 gulp-sass-sprites
 =================
 
-Convert a sets of images into spritesheets and sass map via gulp
+Convert groups of images into spritesheets and sass map via gulp
 
 
 ## Usage
 
-First, install globally `spritesmith` and `gulp`:
+First, install `spritesmith` and `gulp`:
 
 ```shell
 sudo npm install spritesmith -g;
@@ -59,6 +59,17 @@ You can use any sprite in your sass file via sprite mixin.
 This sass mixin applies 4 css properties:
 `background-image`, `background-position`, `height`, `width`
 
+example (scss):
+```css
+@include sprite('logo');
+```
+
+if you want to extend placeholder with background-image definition instead of applying it directly, pass true as second argument:
+
+```css
+@include sprite('logo', true);
+```
+
 ### functions
 
 #### sprite-width
@@ -82,6 +93,114 @@ returns position as css property `background-position`
 
 #### sprite-image
 returns image path
+
+## Example SCSS result
+```css
+
+// MAPS
+
+$sprites: (
+
+  logo: (
+    width: 124,
+    height: 23,
+    x: 0,
+    y: 0,
+    group: "basic"
+  ),
+
+  logo--client: (
+    width: 96,
+    height: 17,
+    x: 0,
+    y: -24,
+    group: "basic"
+  ),
+
+  logo--x2: (
+    width: 247,
+    height: 45,
+    x: 0,
+    y: 0,
+    group: "medium"
+  ),
+
+  logo--client--x2: (
+    width: 192,
+    height: 33,
+    x: 0,
+    y: -46,
+    group: "medium"
+  ),
+
+);
+
+$spriteGroups: (
+
+  basic: (
+    image: "../images/sprites.basic.png",
+    width: 124,
+    height: 41
+  ),
+
+  medium: (
+    image: "../images/sprites.medium.png",
+    width: 247,
+    height: 79
+  ),
+
+);
+
+// PLACEHOLDERS
+
+%sprite-basic {
+  background-image: url(../images/sprites.basic.png);
+}
+
+%sprite-medium {
+  background-image: url(../images/sprites.medium.png);
+}
+
+
+// MIXINS & FUNCTIONS
+@function sprite-width($name) {
+  @return map-get(map-get($sprites, $name), 'width');
+}
+
+@function sprite-height($name) {
+  @return map-get(map-get($sprites, $name), 'height');
+}
+
+@function sprite-group-image($name) {
+  @return map-get(map-get($spriteGroups, $name), 'image');
+}
+
+@function sprite-image($name) {
+  @return sprite-group-image(map-get(map-get($sprites, $name), 'group'));
+}
+
+@mixin sprite-position($name) {
+  $sprite : map-get($sprites, $name);
+
+  background-position: #{map-get($sprite, 'x')}px #{map-get($sprite, 'y')}px;
+}
+
+@mixin sprite($name, $extend : false) {
+  $sprite : map-get($sprites, $name);
+
+  @if $extend {
+    @extend %sprite-#{map-get($sprite, 'group')};
+  }
+  @else {
+    background-image: url(#{sprite-image($sprite)});
+  }
+
+  height: #{sprite-height($sprite)}px;
+  width: #{sprite-width($sprite)}px;
+  @include sprite-position($sprite);
+}
+
+```
 
 
 ## API
@@ -110,10 +229,9 @@ Set relative path to sprite img, which will be used in styles file.
 Type: `String`
 Default: ``
 
-Path to mustache tmpl file, to format output styles file.
+Path to lodash tpl file, to format output styles file.
 
 Set relative path to sprite img, which will be used in styles file.
-
 
 #### options.padding
 Type: `Integer`
